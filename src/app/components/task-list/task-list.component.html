@@ -1,0 +1,11 @@
+<h1>TODOs</h1>
+<div id="task-list">
+  @for(task of tasks; track task.id) {
+  <app-task-detail [task]=task></app-task-detail>
+  }
+  @empty {
+  <h3>No tasks found!</h3>
+  <h4>Make one!</h4>
+  }
+</div>
+<button (click)="addNewTask()">Add New Task</button>

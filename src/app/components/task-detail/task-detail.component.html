@@ -1,0 +1,31 @@
+<form [formGroup]="formGroup" class="card"
+  style="border: 1px solid #efefef; border-radius: .5rem; box-shadow: 0 0 5px 5px #e9e9e9;">
+  <div class="card-header">
+    <h5 class="card-subtitle text-muted">{{ task.id }}</h5>
+    <input type="text" class="form-control" formControlName="title" />
+  </div>
+  <div class="card-body">
+    <textarea class="form-control"
+      formControlName="description">{{ task.description }}</textarea>
+    <select class="form-control" formControlName="status">
+      @for(status of statuses; track $index;) {
+      <!-- [selected]="status === task.status" -->
+      <option [value]="status">
+        {{ status }}
+      </option>
+      }
+    </select>
+    <input type="date" class="form-control" formControlName="dueDate" />
+  </div>
+  <div class="card-footer">
+    <button type="button" class="btn btn-primary"
+      (click)="editTask()">Edit</button>
+    @if (isEditing) {
+    <button type="button" class="btn btn-primary"
+      (click)="saveTask()">Save</button>
+    }
+    <br>
+    <button type="button" class="btn btn-danger"
+      (click)="deleteTask()">Delete</button>
+  </div>
+</form>
